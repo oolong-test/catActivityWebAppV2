@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cat Activity Tracker - Daily Feline Activities</title>
+    <meta name="description" content="Track your cat's daily activities with timestamps and view activity summaries in charts">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <h1 class="logo">🐱 Cat Activity Tracker</h1>
+            <p class="tagline">Monitor your cat's daily activities and patterns</p>
+        </div>
+    </header>
+
+    <main class="main">
+        <div class="container">
+            <section class="add-activity-section">
+                <h2>Log Cat Activity</h2>
+                <form id="addActivityForm" class="activity-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="activityType">Activity Type</label>
+                            <select id="activityType" name="activityType" required>
+                                <option value="">Select activity</option>
+                                <option value="eating">Eating</option>
+                                <option value="sleeping">Sleeping</option>
+                                <option value="playing">Playing</option>
+                                <option value="grooming">Grooming</option>
+                                <option value="litter-box">Litter Box</option>
+                                <option value="exploring">Exploring</option>
+                                <option value="socializing">Socializing</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="activityTime">Time</label>
+                            <input type="datetime-local" id="activityTime" name="activityTime" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="activityNotes">Notes (optional)</label>
+                        <textarea id="activityNotes" name="activityNotes" placeholder="Add any additional notes about the activity..." rows="3"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Log Activity</button>
+                </form>
+            </section>
+
+            <section class="summary-section">
+                <h2>Activity Summary</h2>
+                <div class="summary-controls">
+                    <div class="date-range">
+                        <label for="startDate">From:</label>
+                        <input type="date" id="startDate" name="startDate">
+                        <label for="endDate">To:</label>
+                        <input type="date" id="endDate" name="endDate">
+                        <button id="updateChart" class="btn btn-secondary">Update Chart</button>
+                    </div>
+                </div>
+                <div class="chart-container">
+                    <canvas id="activityChart"></canvas>
+                </div>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <h3>Total Activities</h3>
+                        <p id="totalActivities">0</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Most Active Time</h3>
+                        <p id="mostActiveTime">-</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Favorite Activity</h3>
+                        <p id="favoriteActivity">-</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="recent-activities-section">
+                <h2>Recent Activities</h2>
+                <div id="activitiesList" class="activities-list">
+                    <!-- Activities will be dynamically added here -->
+                </div>
+                <div id="noActivitiesMessage" class="no-activities-message">
+                    <p>No activities logged yet. Start tracking your cat's activities above!</p>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Cat Activity Tracker. Built for learning web deployment.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
